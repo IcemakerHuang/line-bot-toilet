@@ -5,6 +5,7 @@ import be from './commands/be.js'
 import anime from './commands/anime.js'
 import { scheduleJob } from 'node-schedule'
 import * as usdtwd from './data/usdtwd.js'
+import toilet from './commands/toilet.js'
 
 // https://crontab.guru/once-a-day
 scheduleJob('0 0 * * *', () => {
@@ -91,6 +92,8 @@ bot.on('message', (event) => {
           ]
         }
       })
+    } else if (event.message.text === 'location') {
+      toilet(event)
     }
   }
 })
