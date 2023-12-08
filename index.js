@@ -1,17 +1,7 @@
 import 'dotenv/config'
 import linebot from 'linebot'
 import fe from './commands/fe.js'
-import be from './commands/be.js'
-import anime from './commands/anime.js'
-import { scheduleJob } from 'node-schedule'
-import * as usdtwd from './data/usdtwd.js'
-// import toilet from './commands/toilet.js'
-
-// https://crontab.guru/once-a-day
-scheduleJob('0 0 * * *', () => {
-  usdtwd.update()
-})
-usdtwd.update()
+import toilet from './commands/toilet.js'
 
 // 基本機器人架構
 // 之後可以把帳號資訊放進.env
@@ -31,70 +21,9 @@ bot.on('message', (event) => {
   if (event.message.type === 'text') {
     if (event.message.text === '前端') {
       fe(event)
-    } else if (event.message.text === '後端') {
-      // console.log(456)
-      be(event)
-    } else if (event.message.text.startsWith('動畫')) {
-      // 動畫14882
-      anime(event)
-    } else if (event.message.text === '匯率') {
-      event.reply(usdtwd.exrate.toString())
-    } else if (event.message.text === '123') {
-      event.reply({
-        type: 'text',
-        text: '123',
-        quickReply: {
-          items: [
-            {
-              type: 'action',
-              action: {
-                // 傳訊息
-                type: 'message',
-                // 傳送的文字
-                text: 'message text',
-                // 按鈕的文字
-                label: 'message'
-              }
-            },
-            {
-              type: 'action',
-              action: {
-                type: 'cameraRoll',
-                label: '相簿'
-              }
-            },
-            {
-              type: 'action',
-              action: {
-                type: 'cameraRoll',
-                label: '位置'
-              }
-            },
-            {
-              type: 'action',
-              action: {
-                type: 'uri',
-                uri: 'https://wdaweb.github.io',
-                label: '網址'
-              }
-            },
-            {
-              type: 'action',
-              action: {
-                type: 'postback',
-                label: 'postback',
-                // 傳送的文字
-                // text: 'postback 文字'
-                // postback 事件接收到的資訊
-                data: '111222333'
-              }
-            }
-          ]
-        }
-      })
-    } else if (event.message.type === 'location') {
-      fe(event)
     }
+  } else if (event.message.type === 'location') {
+    toilet(event)
   }
 })
 bot.on('postback', (event) => {
