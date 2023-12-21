@@ -28,10 +28,10 @@ export default async (event) => {
       .slice(0, 3)
       .forEach((value) => {
         const template = replyTemplate()
-        const bubble = template.contents[0] // 获取 replyTemplate 中的第一个 bubble
+        const bubble = template.contents[0] // 獲取 replyTemplate 中的第一個 bubble
         bubble.hero.url = 'https://img.ltn.com.tw/Upload/news/600/2022/04/19/3898832_1_1.jpg'
         bubble.body.contents[0].text = value.name
-        box.push(bubble) // 将这个 bubble 添加到 box 数组
+        box.push(bubble) // 將 Line 的 bubble 添加到 box 陣列
         console.log(value)
         // const msg = replyTemplate()
         // msg.hero.url = 'https://img.ltn.com.tw/Upload/news/600/2022/04/19/3898832_1_1.jpg'
