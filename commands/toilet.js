@@ -1,11 +1,11 @@
 import axios from 'axios'
 import replyTemplate from '../templates/replies.js'
 import { distance } from './distance.js'
-// import { transform } from './transform.js'
+// import { transform } from './transform.js' 先不用
 
 export default async (event) => {
   try {
-    console.log('AAAAAA')
+    console.log('AAAAAA') // 測試
     // 抓自己的位置
     // 算距離 符合某一個條件
     const { data } = await axios.get(
@@ -76,7 +76,7 @@ export default async (event) => {
 // export default async (event) => {
 //   try {
 //     console.log('AAAAAA')
-//     // 读取本地 JSON 文件
+//     // 讀取 JSON 文件
 //     const dataString = await readFile('../data/Data_All.json', 'utf8')
 //     const data = JSON.parse(dataString)
 //     const box = []

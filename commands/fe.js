@@ -2,6 +2,7 @@ import axios from 'axios'
 import * as cheerio from 'cheerio'
 // 引入cheerio 執行 const $ = cheerio.load(data)
 
+// 此為測試檔，比算距離快
 export default async (event) => {
   try {
     const { data } = await axios.get('https://wdaweb.github.io/')
